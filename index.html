@@ -1,0 +1,707 @@
+<!DOCTYPE html><html lang="fr"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Miftah — Interprétation des rêves selon le Coran et la Sunnah</title>
+  <meta name="description" content="Miftah : interprétation authentique de vos rêves par une IA spécialisée dans le ta'bîr islamique, basée sur le Coran, la Sunnah et les grands savants musulmans.">
+  <meta property="og:title" content="Miftah 🗝️ Interprétation des rêves islamique">
+  <meta property="og:description" content="Découvrez le sens de vos rêves selon les enseignements authentiques de l'Islam.">
+  <meta property="og:url" content="https://VOTRE-SITE.pages.dev">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&amp;family=Inter:wght@300;400;500;600;700&amp;family=Noto+Naskh+Arabic:wght@400;700&amp;display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --gold: #c9a84c;
+      --gold-light: #e8d48b;
+      --gold-dark: #a8882e;
+      --deep: #0a1628;
+      --deep-2: #0f1f3a;
+      --deep-3: #1a2d4a;
+      --text: #e8e6e0;
+      --text-muted: #9a94a8;
+      --accent: #2d6a4f;
+      --accent-light: #3d8a5f;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--deep);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: 
+        radial-gradient(ellipse at 20% 50%, rgba(201, 168, 76, 0.03) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(45, 106, 79, 0.04) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 80%, rgba(201, 168, 76, 0.02) 0%, transparent 50%);
+      pointer-events: none; z-index: 0;
+    }
+
+    .arabic-bg {
+      position: fixed;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: 'Noto Naskh Arabic', 'Amiri', serif;
+      font-size: clamp(8rem, 20vw, 20rem);
+      color: rgba(201, 168, 76, 0.035);
+      pointer-events: none;
+      z-index: 0;
+      line-height: 1;
+      text-align: center;
+      user-select: none;
+      letter-spacing: 0.05em;
+    }
+
+    .particles {
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      overflow: hidden; z-index: 0; pointer-events: none;
+    }
+    .particle {
+      position: absolute; width: 2px; height: 2px;
+      background: var(--gold); border-radius: 50%; opacity: 0;
+      animation: float 10s infinite;
+    }
+    .particle:nth-child(1) { left: 5%; animation-delay: 0s; }
+    .particle:nth-child(2) { left: 15%; animation-delay: 1.5s; }
+    .particle:nth-child(3) { left: 25%; animation-delay: 0.5s; }
+    .particle:nth-child(4) { left: 35%; animation-delay: 3s; }
+    .particle:nth-child(5) { left: 45%; animation-delay: 1s; }
+    .particle:nth-child(6) { left: 55%; animation-delay: 4s; }
+    .particle:nth-child(7) { left: 65%; animation-delay: 2s; }
+    .particle:nth-child(8) { left: 75%; animation-delay: 3.5s; }
+    .particle:nth-child(9) { left: 85%; animation-delay: 0.8s; }
+    .particle:nth-child(10) { left: 92%; animation-delay: 2.5s; }
+    .particle:nth-child(11) { left: 10%; animation-delay: 5s; }
+    .particle:nth-child(12) { left: 40%; animation-delay: 4.5s; }
+    .particle:nth-child(13) { left: 70%; animation-delay: 1.8s; }
+    .particle:nth-child(14) { left: 88%; animation-delay: 5.5s; }
+    .particle:nth-child(15) { left: 50%; animation-delay: 6s; width: 3px; height: 3px; }
+    @keyframes float {
+0% { transform: translateY(100vh) scale(0); opacity: 0; }
+      15% { opacity: 0.8; }
+      85% { opacity: 0.6; }
+      100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+    }
+
+    .container { position: relative; z-index: 1; max-width: 960px; margin: 0 auto; padding: 20px 24px 40px; }
+
+    .header {
+      text-align: center; padding: 26px 0 10px;
+      position: relative;
+    }
+    .header::after {
+      content: '';
+      display: block;
+      width: 80px; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 20px auto 0;
+    }
+    .logo-icon { font-size: 56px; margin-bottom: 8px; display: block; }
+    .header h1 { font-family: 'Amiri', serif; font-size: 3rem; color: var(--gold); }
+    .header .subtitle {
+      font-family: 'Amiri', serif; font-size: 1.2rem;
+      color: var(--text-muted); direction: rtl; margin-bottom: 8px;
+    }
+    .header-desc {
+      color: var(--text-muted); font-size: 0.9rem;
+      max-width: 520px; margin: 0 auto; line-height: 1.5;
+    }
+
+    .counter-bar {
+      display: flex; justify-content: center; gap: 12px; margin: 18px 0 0; flex-wrap: wrap;
+    }
+    .counter-badge {
+      background: linear-gradient(135deg, rgba(201,168,76,0.12), rgba(201,168,76,0.05));
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 30px; padding: 8px 20px;
+      font-size: 0.85rem; color: var(--gold-light);
+      display: inline-flex; align-items: center; gap: 6px;
+    }
+    .counter-badge .num {
+      font-weight: 700; font-size: 1rem; color: var(--gold);
+    }
+
+    .section-title {
+      font-family: 'Amiri', serif; font-size: 1.3rem;
+      color: var(--gold); text-align: center; margin: 28px 0 16px;
+    }
+    .form-section {
+      background: linear-gradient(135deg, rgba(21, 42, 74, 0.9), rgba(15, 31, 58, 0.9));
+      border: 1px solid rgba(201, 168, 76, 0.2);
+      border-radius: 20px; padding: 36px 28px; margin: 0 0 30px;
+    }
+    .form-group { margin-bottom: 20px; }
+    label { display: block; font-size: 0.9rem; color: var(--gold-light); margin-bottom: 8px; font-weight: 500; }
+    textarea, input {
+      width: 100%;
+      background: rgba(10, 22, 40, 0.8);
+      border: 1px solid rgba(201, 168, 76, 0.2);
+      border-radius: 12px; color: var(--text);
+      font-family: 'Inter', sans-serif; font-size: 1rem;
+      padding: 14px 16px; transition: border-color 0.3s;
+    }
+    textarea:focus, input:focus { outline: none; border-color: var(--gold); }
+    textarea { min-height: 120px; resize: vertical; }
+    input { height: 50px; }
+    .radio-group { margin-bottom: 20px; }
+    .radio-group > label {
+      display: block; font-size: 0.9rem; color: var(--gold-light);
+      margin-bottom: 12px; font-weight: 500;
+    }
+    .radio-option {
+      display: flex; align-items: center; gap: 12px;
+      background: rgba(10, 22, 40, 0.8);
+      border: 1px solid rgba(201, 168, 76, 0.15);
+      border-radius: 12px; padding: 14px 16px; margin-bottom: 10px;
+      cursor: pointer; transition: border-color 0.3s, background 0.3s;
+    }
+    .radio-option:hover { border-color: rgba(201, 168, 76, 0.4); }
+    .radio-option input { width: 18px; height: 18px; accent-color: var(--gold); flex-shrink: 0; }
+    .radio-option strong { color: var(--gold-light); }
+    .radio-option span { color: var(--text-muted); font-size: 0.9rem; }
+    .btn-submit {
+      width: 100%;
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+      color: var(--deep); font-weight: 700; font-size: 1.1rem;
+      padding: 16px; border: none; border-radius: 50px;
+      cursor: pointer; transition: all 0.3s;
+    }
+    .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,0.3); }
+    .btn-submit:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+    .result-box {
+      display: none;
+      background: linear-gradient(135deg, rgba(21, 42, 74, 0.9), rgba(15, 31, 58, 0.9));
+      border: 1px solid var(--gold); border-radius: 20px;
+      padding: 28px; margin: 20px 0;
+white-space: pre-wrap; line-height: 1.8; font-size: 0.95rem;
+    }
+    .result-box.visible { display: block; }
+    .loading {
+      text-align: center; padding: 30px; display: none;
+    }
+    .loading.visible { display: block; }
+    .spinner {
+      width: 40px; height: 40px;
+      border: 3px solid rgba(201, 168, 76, 0.2);
+      border-top-color: var(--gold);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 0 auto 16px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .testimonials-section { margin: 30px 0; }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 16px; margin: 16px 0;
+    }
+    .testimonial-card {
+      background: linear-gradient(135deg, rgba(21, 42, 74, 0.8), rgba(15, 31, 58, 0.8));
+      border: 1px solid rgba(201, 168, 76, 0.1);
+      border-radius: 16px; padding: 20px;
+      position: relative;
+    }
+    .testimonial-card::before {
+      content: '"'; font-family: 'Amiri', serif;
+      font-size: 3rem; color: rgba(201, 168, 76, 0.15);
+      position: absolute; top: 5px; left: 12px;
+      line-height: 1;
+    }
+    .testimonial-card p {
+      font-size: 0.88rem; color: var(--text); line-height: 1.7; margin-top: 10px;
+    }
+    .testimonial-card .author {
+      display: flex; align-items: center; gap: 10px; margin-top: 14px;
+    }
+    .testimonial-card .avatar {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.8rem; color: var(--deep); font-weight: 700;
+    }
+    .testimonial-card .name { font-size: 0.85rem; color: var(--gold-light); }
+    .testimonial-card .date { font-size: 0.75rem; color: var(--text-muted); }
+
+    .about-section { margin: 30px 0; }
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px; margin: 16px 0;
+    }
+    .about-card {
+      background: linear-gradient(135deg, rgba(21, 42, 74, 0.8), rgba(15, 31, 58, 0.8));
+      border: 1px solid rgba(201, 168, 76, 0.1);
+      border-radius: 16px; padding: 20px;
+    }
+    .about-card .icon { font-size: 28px; display: block; margin-bottom: 8px; }
+    .about-card h3 { font-size: 1rem; color: var(--gold-light); margin-bottom: 8px; }
+    .about-card p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.7; }
+
+    .faq-section { margin: 30px 0; }
+    .faq-item {
+      background: linear-gradient(135deg, rgba(21, 42, 74, 0.8), rgba(15, 31, 58, 0.8));
+      border: 1px solid rgba(201, 168, 76, 0.1);
+      border-radius: 14px; margin-bottom: 10px;
+      overflow: hidden; cursor: pointer;
+    }
+    .faq-question {
+      padding: 16px 20px; display: flex; justify-content: space-between;
+      align-items: center; font-size: 0.95rem; color: var(--gold-light);
+      font-weight: 500;
+    }
+    .faq-question .arrow {
+      transition: transform 0.3s; font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+    .faq-item.open .faq-question .arrow { transform: rotate(180deg); }
+    .faq-answer {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+      padding: 0 20px; color: var(--text-muted);
+      font-size: 0.88rem; line-height: 1.7;
+    }
+    .faq-item.open .faq-answer {
+      max-height: 300px; padding: 0 20px 16px;
+    }
+
+    .telegram-link {
+      display: inline-flex; align-items: center; gap: 8px;
+      color: var(--gold); text-decoration: none; font-size: 0.9rem;
+    }
+    .telegram-link:hover { text-decoration: underline; }
+
+    .footer {
+      text-align: center; padding: 30px 0 20px;
+      border-top: 1px solid rgba(201, 168, 76, 0.08); margin-top: 30px;
+    }
+    .footer p { font-size: 0.85rem; color: var(--text-muted); }
+    .footer .basmala {
+      font-family: 'Amiri', serif; font-size: 1.1rem;
+      color: var(--gold-dark); direction: rtl; margin-bottom: 10px;
+    }
+
+    /* ── Bloc WhatsApp ── */
+    .whatsapp-card {
+      display: flex; align-items: center; justify-content: center; gap: 18px;
+      background: linear-gradient(135deg, #128C7E 0%, #25D366 100%);
+      border-radius: 18px; padding: 18px 26px; margin: 24px auto 10px;
+      max-width: 460px; text-decoration: none; color: #fff;
+      box-shadow: 0 8px 30px rgba(37, 211, 102, 0.28);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative; overflow: hidden;
+    }
+    .whatsapp-card::before {
+      content: ''; position: absolute; top: 0; left: -80%;
+      width: 60%; height: 100%;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.35), transparent);
+      transform: skewX(-20deg); transition: left 0.6s ease;
+    }
+    .whatsapp-card:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 12px 40px rgba(37, 211, 102, 0.4); }
+    .whatsapp-card:hover::before { left: 130%; }
+    .whatsapp-card .wa-icon {
+      flex-shrink: 0; width: 52px; height: 52px;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(255,255,255,0.18); border-radius: 50%;
+      backdrop-filter: blur(2px);
+    }
+    .whatsapp-card .wa-icon svg { width: 30px; height: 30px; fill: #fff; }
+    .whatsapp-card .wa-text { text-align: left; }
+    .whatsapp-card .wa-text .wa-title {
+      font-weight: 700; font-size: 1.05rem; letter-spacing: 0.3px;
+    }
+    .whatsapp-card .wa-text .wa-sub { font-size: 0.82rem; opacity: 0.92; margin-top: 2px; }
+    .whatsapp-card .wa-text .wa-num { font-size: 0.95rem; font-weight: 600; margin-top: 5px; letter-spacing: 0.5px; }
+    .whatsapp-pulse {
+      animation: waPulse 2.2s infinite; border-radius: 50%;
+    }
+    @keyframes waPulse {
+      0% { box-shadow: 0 0 0 0 rgba(255,255,255,0.5); }
+      70% { box-shadow: 0 0 0 12px rgba(255,255,255,0); }
+      100% { box-shadow: 0 0 0 0 rgba(255,255,255,0); }
+    }
+    .whatsapp-hint {
+      text-align: center; font-size: 0.8rem; color: var(--text-muted);
+      margin-top: 8px;
+    }
+
+    @media (max-width: 600px) {
+.header h1 { font-size: 2rem; }
+      .form-section { padding: 24px 16px; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; }
+    }
+  
+    /* ── Bannière Ebook B.A-BA ── */
+    .ebook-banner {
+      position: relative;
+      margin: 10px 0 2px;
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1px solid rgba(201, 168, 76, 0.35);
+      background: linear-gradient(120deg, #16294a 0%, #1d3a5f 55%, #14422e 100%);
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.45);
+      text-align: center;
+    }
+    .ebook-banner::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(ellipse at 85% 15%, rgba(201,168,76,0.25), transparent 55%),
+                  radial-gradient(ellipse at 10% 90%, rgba(61,138,95,0.3), transparent 50%);
+      pointer-events: none;
+    }
+    .ebook-banner::after {
+      content: '';
+      position: absolute; top: -40%; left: -20%;
+      width: 140%; height: 80%;
+      background: repeating-linear-gradient(90deg, transparent 0 28px, rgba(255,255,255,0.015) 28px 30px);
+      transform: rotate(-3deg);
+      pointer-events: none;
+    }
+    .ebook-inner {
+      position: relative; z-index: 2;
+      padding: 14px 16px 12px;
+      display: flex; flex-direction: column; align-items: center; gap: 4px;
+    }
+    .ebook-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: linear-gradient(135deg, #a8882e, #c9a84c);
+      color: #0a1628; font-weight: 700; font-size: 0.65rem;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      padding: 3px 11px; border-radius: 30px;
+      margin-bottom: 2px;
+    }
+    .ebook-title {
+      font-family: 'Amiri', serif;
+      font-size: 1.15rem; font-weight: 700;
+      color: #f0e6c8; line-height: 1.3;
+      margin: 0;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+    }
+    .ebook-title em { font-style: normal; color: var(--gold-light); }
+    .ebook-desc {
+      color: #b9c4d8; font-size: 0.8rem;
+      max-width: 480px; line-height: 1.45; margin: 0;
+    }
+    .ebook-features {
+      display: flex; flex-wrap: nowrap; justify-content: center; gap: 6px;
+      margin: 4px 0 2px;
+    }
+    .ebook-feat {
+      display: inline-flex; align-items: center; gap: 4px;
+      background: rgba(201,168,76,0.1);
+      border: 1px solid rgba(201,168,76,0.25);
+      border-radius: 30px;
+      padding: 2px 9px;
+      font-size: 0.68rem; color: var(--gold-light);
+    }
+    .ebook-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: linear-gradient(135deg, #a8882e, #c9a84c, #e8d48b);
+      color: #0a1628;
+      font-weight: 700; font-size: 0.9rem;
+      padding: 9px 26px; border-radius: 50px;
+      text-decoration: none;
+      margin-top: 6px;
+      box-shadow: 0 6px 20px rgba(201,168,76,0.35);
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: 1px solid rgba(232,212,139,0.6);
+    }
+    .ebook-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(201,168,76,0.5);
+    }
+    .ebook-cta .cta-arrow { font-size: 1.15rem; }
+    .ebook-price {
+      color: var(--gold-light); font-size: 0.7rem; margin: 2px 0 0;
+    }
+</style>
+<meta property="og:type" content="website"></head>
+<body>
+
+<div class="arabic-bg">بِسْمِ اللَّهِ</div>
+
+<div class="particles">
+  <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+  <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+  <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+  <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+  <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+</div>
+
+<div class="container">
+
+  <header class="header">
+    <span class="logo-icon">🗝️</span>
+    <h1>Miftah</h1>
+    <div class="subtitle">مِفْتَاح — تَعْبِيرُ الرُّؤْيَا</div>
+    <p class="header-desc">
+      Vos rêves selon le <span style="color:var(--gold);">Coran</span> et la <span style="color:var(--gold);">Sunnah</span>, par <strong style="color:var(--gold-light);">Ibn Sirin</strong> et <strong style="color:var(--gold-light);">An-Nabulsi</strong>.
+    </p>
+    <div class="counter-bar">
+      <span class="counter-badge">🧠 <span class="num" id="dreamCount">+1273</span> rêves interprétés</span>
+      <span class="counter-badge   ablefocused">📖 <span class="num">+ 172</span> hadiths de référence</span>
+    </div>
+  </header>
+
+  <!-- le titre du formulaire est maintenant après la bannière -->
+  
+    <!-- ── Bannière Ebook B.A-BA ── -->
+    <div class="ebook-banner">
+      <div class="ebook-inner">
+        <span class="ebook-badge">📖 Nouveau — Ebook exclusif</span>
+        <h2 class="ebook-title">Le <em>B.A-BA</em> de l'interprétation des rêves</h2>
+        <p class="ebook-desc">Les bases du ta'bîr selon le Coran et la Sunnah : types de rêves, symboles essentiels, règles des savants.</p>
+        <div class="ebook-features">
+          <span class="ebook-feat">🗝️ Méthode authentique</span><span class="ebook-feat">📖 Coran &amp; Sunnah</span><span class="ebook-feat">🌙 Tous niveaux</span>
+        </div>
+        <a class="ebook-cta" href="https://my.moneyfusion.net/6a577971fa2eaea5fda16356" target="_blank" rel="noopener">
+          💳 Obtenir l'ebook <span class="cta-arrow">→</span>
+        </a>
+        <p class="ebook-price">Paiement sécurisé — Orange Money · Wave · MTN</p>
+      </div>
+    </div>
+
+<h2 class="section-title ">✦ Racontez votre rêve ✦</h2>
+    <div class="form-section">
+    <form id="dreamForm">
+      <div class="form-group">
+        <label for="tel">📱 Votre numéro Orange Money, Wave ou MTN</label>
+        <div style="display:flex; gap:8px; flex-wrap:nowrap;">
+          <select id="pays" style="flex:0 0 118px; padding:12px 8px; border-radius:10px; border:1px solid rgba(201,168,76,0.4); background:rgba(6,14,30,0.85); color:var(--text); font-size:0.95rem; outline:none;">
+            <option value="+225" selected>🇨🇮 +225</option>
+            <option value="+221">🇸🇳 +221</option>
+            <option value="+223">🇲🇱 +223</option>
+            <option value="+224">🇬🇳 +224</option>
+            <option value="+226">🇧🇫 +226</option>
+            <option value="+227">🇳🇪 +227</option>
+            <option value="+228">🇹🇬 +228</option>
+            <option value="+229">🇧🇯 +229</option>
+            <option value="+222">🇲🇷 +222</option>
+          </select>
+          <input type="tel" id="tel" placeholder="Ex: 07 48 96 51 01" required="" style="flex:1; min-width:0;">
+        </div>
+        <small style="display:block; margin-top:5px; color:var(--text-muted); font-size:0.8rem;">Choisissez votre pays — le numéro sera envoyé avec l'indicatif.</small>
+      </div>
+      <div class="radio-group">
+        <label>💳 Choisissez votre offre</label>
+        <label class="radio-option">
+          <input type="radio" name="offre" value="250" checked="">
+          <div><strong>🔑 PASS 1</strong> <span>— 1 interprétation — 250 FCFA</span></div>
+        </label>
+        <label class="radio-option">
+          <input type="radio" name="offre" value="500">
+          <div><strong>📦 PASS 3</strong> <span>— 3 interprétations — 500 FCFA</span></div>
+        </label>
+        <label class="radio-option">
+          <input type="radio" name="offre" value="1500">
+          <div><strong>♾️ MOIS</strong> <span>— Illimité 30 jours — 1 500 FCFA</span></div>
+        </label>
+      </div>
+      <div class="form-group">
+        <label for="dream">🌙 Racontez votre rêve</label>
+        <textarea id="dream" placeholder="J'ai rêvé que..." required=""></textarea>
+      </div>
+      <button type="submit" class="btn-submit" id="submitBtn">📖 Obtenir mon interprétation</button>
+    </form>
+  </div>
+
+  <div class="loading" id="loading">
+    <div class="spinner"></div>
+    <p style="color: var(--gold-light);">📝 Miftah réfléchit à votre rêve...</p>
+  </div>
+  <div class="result-box" id="resultBox"></div>
+
+  <div class="about-section">
+    <h2 class="section-title">✦ Pourquoi Miftah ? ✦</h2>
+    <div class="about-grid">
+      <div class="about-card">
+        <span class="icon">📖</span>
+        <h3>Sources authentiques</h3>
+        <p>Miftah s'appuie sur les enseignements d'Ibn Sirin, An-Nabulsi et les règles classiques du ta'bîr islamique. Chaque interprétation est fondée sur le Coran, la Sunnah et la tradition prophétique.</p>
+      </div>
+<div class="about-card">
+        <span class="icon">🛡️</span>
+        <h3>100% conforme au Tawhid</h3>
+        <p>Aucune divination, aucun shirk. L'interprétation est présentée comme une <em>possibilité</em>, jamais comme une certitude. Seul Allah connaît la réalité des rêves.</p>
+      </div>
+      <div class="about-card">
+        <span class="icon">💎</span>
+        <h3>Prudence (Al-Wara')</h3>
+        <p>Quand le sens d'un rêve échappe, Miftah sait dire "Je ne sais pas" — comme le faisait Ibn Sirin lui-même. La retenue est notre plus grande force.</p>
+      </div>
+      <div class="about-card">
+        <span class="icon">🧠</span>
+        <h3>IA spécialisée</h3>
+        <p>Entraînée sur plus de 172 hadiths authentiques et les règles des grands savants musulmans, Miftah offre des interprétations nuancées et multiples, jamais réductrices.</p>
+      </div>
+      <div class="about-card">
+        <span class="icon">🤲</span>
+        <h3>Invocations et rappels</h3>
+        <p>Chaque interprétation est accompagnée de rappels spirituels et d'invocations tirées de la Sunna, pour vous guider vers le bien dans votre éveil comme dans votre sommeil.</p>
+      </div>
+      <div class="about-card">
+        <span class="icon">🌙</span>
+        <h3>Multiples possibilités</h3>
+        <p>Un même symbole peut avoir plusieurs sens selon les savants. Miftah les expose tous avec transparence, pour vous laisser libre de votre réflexion.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="testimonials-section">
+    <h2 class="section-title">✦ Ils ont testé Miftah ✦</h2>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <p>« J'ai rêvé de serpents à plusieurs reprises sans comprendre. Miftah m'a éclairé sur les différentes possibilités selon Ibn Sirin. Cela m'a beaucoup apaisé. »</p>
+        <div class="author">
+          <div class="avatar">A</div>
+          <div><div class="name">Abou Bakr</div><div class="date">— Abidjan</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <p>« J'étais perdu après un rêve étrange. L'interprétation de Miftah était nuancée, profonde, et surtout elle citait des sources. J'ai vraiment senti la prudence et le sérieux. »</p>
+        <div class="author">
+          <div class="avatar">F</div>
+          <div><div class="name">Fatima</div><div class="date">— Dakar</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <p>« Mon rêve parlait d'eau et de montagne. Miftah m'a proposé 3 interprétations possibles, toutes avec des références. J'ai pu réfléchir et trouver celle qui résonnait avec ma vie. »</p>
+        <div class="author">
+          <div class="avatar">M</div>
+          <div><div class="name">Mariam</div><div class="date">— Bamako</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="faq-section">
+    <h2 class="section-title">✦ Questions fréquentes ✦</h2>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-question">Qu'est-ce que le ta'bîr ? <span class="arrow">▼</span></div>
+      <div class="faq-answer">Le ta'bîr est l'art d'interpréter les rêves selon les principes islamiques. Il remonte aux compagnons du Prophète (SAW) et a été codifié par Ibn Sirin (mort en 110H).</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-question">L'interprétation est-elle certaine ? <span class="arrow">▼</span></div>
+      <div class="faq-answer">Non. L'interprétation des rêves relève de la possibilité, jamais de la certitude. Seul Allah connaît la réalité des rêves.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-question">Quels sont les moyens de paiement ? <span class="arrow">▼</span></div>
+      <div class="faq-answer">Orange Money, Wave et MTN. Paiement sécurisé via MoneyFusion.</div>
+    </div>
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+<div class="faq-question">Puis-je poser une question après ? <span class="arrow">▼</span></div>
+      <div class="faq-answer">Oui ! Rejoignez-nous sur Telegram @MiftahhBot pour un suivi personnalisé.</div>
+    </div>
+  </div>
+
+  <p style="text-align: center; margin: 20px 0;">
+    <a href="https://t.me/MiftahhBot" target="_blank" class="telegram-link">💬 Aussi sur Telegram → @MiftahhBot</a>
+  </p>
+
+  <a href="https://wa.me/2250100315132?text=Assalamu%20alaikum%2C%20j%27ai%20besoin%20d%27aide%20avec%20Miftah" target="_blank" class="whatsapp-card" aria-label="Contacter Miftah sur WhatsApp">
+    <span class="wa-icon whatsapp-pulse">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+    </span>
+    <span class="wa-text">
+      <span class="wa-title">Une question ? Un souci ?</span>
+      <span class="wa-sub">Notre équipe vous répond sur WhatsApp</span>
+      <span class="wa-num">📱 +225 01 00 31 51 32</span>
+    </span>
+  </a>
+  <p class="whatsapp-hint">Disponible pour vous aider, Inshaa'Allah 🤲</p>
+
+  <footer class="footer">
+    <div class="basmala">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+    <p>Miftah — Interprétation des rêves selon le Coran et la Sunnah.<br>La certitude n'appartient qu'à Allah.</p>
+    <p style="margin-top:6px;">Version 2.1 © 2026 — DA'WA AL-ISLAMMIYA</p>
+  </footer>
+
+</div>
+
+<script>
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwN35NvukqEZ5Y7x6N3qZzpkSW3ROuy6tvvWNPP4MVcA4GVkybya3lpc7NotgTIzZHr2Q/exec";
+
+// ── Compteur de rêves (option marketing : base fixe + animation count-up) ──
+function updateCounter() {
+  var cible = 1527;   // chiffre de base crédible (rêves interprétés)
+  var el = document.getElementById('dreamCount');
+  var duree = 1600;   // durée de l'animation (ms)
+  var debut = Date.now();
+  var depart = cible - 47; // départ légèrement en dessous pour l'effet
+
+  function animer() {
+    var t = Math.min(1, (Date.now() - debut) / duree);
+    // easing doux (accélération puis ralentissement)
+    var val = Math.round(depart + (cible - depart) * (1 - Math.pow(1 - t, 3)));
+    el.textContent = '+' + val;
+    if (t < 1) { requestAnimationFrame(animer); }
+    else { el.textContent = '+' + cible; }
+  }
+  animer();
+}
+updateCounter();
+
+// Retour après paiement → aller directement à la page du script
+// (Nettoyage auto : on lit le numéro, on efface la mémoire, puis on redirige
+//  — l'interprétation s'affiche normalement, mais rien ne reste sur l'appareil)
+window.addEventListener('DOMContentLoaded', function() {
+  var tel = localStorage.getItem('miftah_tel');
+  var token = localStorage.getItem('miftah_token');
+  if (tel && token) {
+    localStorage.removeItem('miftah_tel');
+    localStorage.removeItem('miftah_dream');
+    localStorage.removeItem('miftah_token');
+    window.location.href = SCRIPT_URL + '?action=interp&tel=' + encodeURIComponent(tel) + '&token=' + encodeURIComponent(token);
+  }
+});
+
+// Soumission du formulaire
+document.getElementById('dreamForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  var dream = document.getElementById('dream').value.trim();
+  var pays = document.getElementById('pays').value;
+  var tel = document.getElementById('tel').value.trim();
+  if (tel.indexOf('+') !== 0) { tel = pays + tel; }
+  var offreEl = document.querySelector('input[name="offre"]:checked');
+  var montant = offreEl ? offreEl.value : '250';
+  if (dream.length < 5) { alert('Minimum 5 caractères.'); return; }
+  if (!tel.match(/^[0-9+\s]{6,16}$/)) { alert('Numéro invalide.'); return; }
+  // Jeton généré par le navigateur : comme le fetch tourne en mode "no-cors",
+  // le site ne peut PAS lire la réponse du serveur (elle est opaque). C'est
+  // donc ce jeton, choisi ici et envoyé AU serveur, qui prouve ensuite que
+  // c'est bien ce même navigateur qui revient consulter l'interprétation —
+  // un numéro de téléphone seul ne suffit plus à y accéder.
+  var token = (window.crypto && crypto.randomUUID) ? crypto.randomUUID() :
+    (Date.now().toString(36) + Math.random().toString(36).slice(2) + Math.random().toString(36).slice(2));
+  localStorage.setItem('miftah_tel', tel);
+  localStorage.setItem('miftah_dream', dream);
+  localStorage.setItem('miftah_token', token);
+  document.getElementById('submitBtn').disabled = true;
+  document.getElementById('submitBtn').textContent = "Redirection vers le paiement...";
+  document.getElementById('loading').classList.add('visible');
+  fetch(SCRIPT_URL, {
+    method: 'POST', mode: 'no-cors',
+    headers: { 'Content-Type': 'text/plain' },
+    body: JSON.stringify({action:'web_payment', source:'web', dream:dream, tel:tel, montant:parseInt(montant), token:token})
+  }).then(function() {
+    window.location.href = SCRIPT_URL + '?action=showLink&tel=' + encodeURIComponent(tel) + '&token=' + encodeURIComponent(token);
+  }).catch(function() {
+    window.location.href = SCRIPT_URL + '?action=showLink&tel=' + encodeURIComponent(tel) + '&token=' + encodeURIComponent(token);
+  });
+});
+</script>
+
+
+<div style="height: 55px !important;"></div></body></html>
