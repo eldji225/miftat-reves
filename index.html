@@ -424,6 +424,46 @@ white-space: pre-wrap; line-height: 1.8; font-size: 0.95rem;
     .ebook-price {
       color: var(--gold-light); font-size: 0.7rem; margin: 2px 0 0;
     }
+
+    /* ── Bloc Avis / Notation ── */
+    .avis-section { margin: 30px 0; }
+    .avis-card {
+      background: linear-gradient(135deg, rgba(21, 42, 74, 0.9), rgba(15, 31, 58, 0.9));
+      border: 1px solid rgba(201, 168, 76, 0.2);
+      border-radius: 20px; padding: 30px 26px; text-align: center;
+    }
+    .avis-card p.avis-desc { color: var(--text-muted); font-size: 0.88rem; margin-bottom: 16px; }
+    .star-rate { display: flex; justify-content: center; gap: 6px; margin-bottom: 18px; }
+    .star-rate .star {
+      font-size: 2.2rem; line-height: 1; cursor: pointer; user-select: none;
+      color: rgba(201, 168, 76, 0.25); transition: color 0.15s, transform 0.15s;
+    }
+    .star-rate .star:hover { transform: scale(1.12); }
+    .star-rate .star.filled { color: var(--gold); }
+    .avis-form textarea {
+      width: 100%; min-height: 80px; margin-bottom: 16px;
+      background: rgba(10, 22, 40, 0.8);
+      border: 1px solid rgba(201, 168, 76, 0.2);
+      border-radius: 12px; color: var(--text);
+      font-family: 'Inter', sans-serif; font-size: 0.95rem;
+      padding: 12px 14px; resize: vertical;
+    }
+    .avis-form textarea:focus { outline: none; border-color: var(--gold); }
+    .avis-submit {
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+      color: var(--deep); font-weight: 700; font-size: 1rem;
+      padding: 12px 34px; border: none; border-radius: 50px;
+      cursor: pointer; transition: all 0.3s;
+    }
+    .avis-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,0.3); }
+    .avis-submit:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+    .avis-merci { display: none; color: var(--gold-light); font-size: 0.95rem; }
+    .avis-merci.visible { display: block; }
+    .avis-moyenne {
+      display: none; align-items: center; justify-content: center; gap: 6px;
+      margin-top: 6px; font-size: 0.85rem; color: var(--gold-light);
+    }
+    .avis-moyenne.visible { display: flex; }
 </style>
 <meta property="og:type" content="website"></head>
 <body>
@@ -584,6 +624,26 @@ white-space: pre-wrap; line-height: 1.8; font-size: 0.95rem;
     </div>
   </div>
 
+  <div class="avis-section">
+    <h2 class="section-title">✦ Votre avis compte ✦</h2>
+    <div class="avis-card">
+      <p class="avis-desc">Donnez une note à Miftah, avec un commentaire si vous le souhaitez.</p>
+      <div class="star-rate" id="avisStars">
+        <span class="star" data-val="1">★</span>
+        <span class="star" data-val="2">★</span>
+        <span class="star" data-val="3">★</span>
+        <span class="star" data-val="4">★</span>
+        <span class="star" data-val="5">★</span>
+      </div>
+      <form id="avisForm" class="avis-form">
+        <textarea id="avisComment" placeholder="Un commentaire à ajouter ? (facultatif)"></textarea>
+        <button type="submit" class="avis-submit" id="avisSubmitBtn" disabled>Envoyer mon avis</button>
+      </form>
+      <p class="avis-merci" id="avisMerci">🙏 Merci pour votre avis !</p>
+      <div class="avis-moyenne" id="avisMoyenne"></div>
+    </div>
+  </div>
+
   <div class="faq-section">
     <h2 class="section-title">✦ Questions fréquentes ✦</h2>
     <div class="faq-item" onclick="this.classList.toggle('open')">
@@ -701,6 +761,59 @@ document.getElementById('dreamForm').addEventListener('submit', function(e) {
     window.location.href = SCRIPT_URL + '?action=showLink&tel=' + encodeURIComponent(tel) + '&token=' + encodeURIComponent(token);
   });
 });
+
+// ── Avis / notation (étoiles + commentaire) ──
+(function () {
+  var noteChoisie = 0;
+  var stars = document.querySelectorAll('#avisStars .star');
+  var submitBtn = document.getElementById('avisSubmitBtn');
+
+  function surligner(n) {
+    stars.forEach(function (s) {
+      s.classList.toggle('filled', parseInt(s.dataset.val, 10) <= n);
+    });
+  }
+
+  stars.forEach(function (s) {
+    s.addEventListener('mouseenter', function () { surligner(parseInt(s.dataset.val, 10)); });
+    s.addEventListener('click', function () {
+      noteChoisie = parseInt(s.dataset.val, 10);
+      surligner(noteChoisie);
+      submitBtn.disabled = false;
+    });
+  });
+  document.getElementById('avisStars').addEventListener('mouseleave', function () { surligner(noteChoisie); });
+
+  document.getElementById('avisForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!noteChoisie) return;
+    var commentaire = document.getElementById('avisComment').value.trim();
+    submitBtn.disabled = true;
+    fetch(SCRIPT_URL, {
+      method: 'POST', mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain' },
+      body: JSON.stringify({ action: 'avis', source: 'web', note: noteChoisie, commentaire: commentaire })
+    }).then(afficherMerci).catch(afficherMerci);
+  });
+
+  function afficherMerci() {
+    document.getElementById('avisForm').style.display = 'none';
+    document.getElementById('avisStars').style.display = 'none';
+    document.getElementById('avisMerci').classList.add('visible');
+  }
+
+  // Moyenne publique (facultatif, n'affecte rien si indisponible)
+  fetch(SCRIPT_URL + '?action=avisStats')
+    .then(function (r) { return r.json(); })
+    .then(function (d) {
+      if (d && d.total > 0) {
+        var el = document.getElementById('avisMoyenne');
+        el.textContent = '⭐ ' + d.moyenne + '/5 sur ' + d.total + ' avis';
+        el.classList.add('visible');
+      }
+    })
+    .catch(function () { /* silencieux : pas grave si indisponible */ });
+})();
 </script>
 
 
